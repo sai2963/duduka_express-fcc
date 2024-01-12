@@ -4,12 +4,11 @@ const{products}=require('./data')
 app.get('/',(req,res)=>{
     res.send('<h1>Home</h1><a href="api/products">products</a>')
 })
-app.get('/api/products',(req,res)=>{
-    const newproducts=products.map((product)=>{
-        const {id,name,image}=product;
-        return{id,name,image}
-    })
-    res.json(newproducts);
+app.get('/api/products/:productID',(req,res)=>{
+    console.log(req);
+    console.log(req.params);
+    const singleproduct =products.find((product)=> product.id===1)
+    res.json(singleproduct);
 })
 
 app.listen(5000,()=>{
