@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
 const logger=require('./logger.js')
-app.use('/api',logger)
+const authorize=require('./authorize.js')
+app.use(authorize,logger)
 app.get('/',(req,res)=>{
   res.send('Home')
 })
