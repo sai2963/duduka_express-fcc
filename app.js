@@ -1,8 +1,10 @@
 const express = require("express");
 const app = express();
+const morgan = require('morgan');
 const logger=require('./logger.js')
 const authorize=require('./authorize.js')
-app.use(authorize,logger)
+//app.use(authorize,logger)
+app.use(morgan('tiny'));
 app.get('/',(req,res)=>{
   res.send('Home')
 })
